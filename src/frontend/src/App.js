@@ -1,29 +1,39 @@
-import {useState, useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {getAllStudents} from "./client";
 import './App.css';
-import {
-    Layout,
-    Menu,
-    Breadcrumb,
-    Table,
-    Spin,
-    Empty,
-    Button, Badge, Tag
-} from 'antd';
+import {Avatar, Badge, Breadcrumb, Button, Empty, Layout, Menu, Spin, Table, Tag} from 'antd';
 import {
     DesktopOutlined,
-    PieChartOutlined,
     FileOutlined,
+    LoadingOutlined,
+    PieChartOutlined,
+    PlusOutlined,
     TeamOutlined,
     UserOutlined,
-    LoadingOutlined,
-    PlusOutlined,
 } from '@ant-design/icons';
 import StudentDrawerForm from "./StudentDrawerForm";
 
+const CustomAvatar = ({name}) => {
+    let trim = name.trim();
+    if (trim.length === 0) {
+        return <Avatar icon={<UserOutlined/>}/>
+    }
+    const split = trim.split(" ");
+    if (split.length === 1) {
+        return <Avatar>{name.charAt(0).toUpperCase()}</Avatar>
+    }
+    return <Avatar>{`${name.charAt(0).toUpperCase()}`}</Avatar>
+}
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
 const columns = [
+    {
+        title: '',
+        dataIndex: 'avatar',
+        key: 'avatar',
+        render: (text, student) =>
+            <CustomAvatar name={student.name}/>
+    },
     {
         title: 'Id',
         dataIndex: 'id',
@@ -88,8 +98,8 @@ function App() {
                 title={() =>
                     <>
                         <Tag style={{marginLeft: "10px"}}>Number of students</Tag>
-                        <Badge count={students.length} className="site-badge-count-4" />
-                        <br /><br />
+                        <Badge count={students.length} className="site-badge-count-4"/>
+                        <br/><br/>
                         <Button
                             onClick={() => setShowDrawer(!showDrawer)}
                             type="primary"
