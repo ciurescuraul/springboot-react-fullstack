@@ -19,6 +19,7 @@ import {
     LoadingOutlined,
     PlusOutlined,
 } from '@ant-design/icons';
+import StudentDrawerForm from "./StudentDrawerForm";
 
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
@@ -51,6 +52,7 @@ function App() {
     const [students, setStudents] = useState([]);
     const [collapsed, setCollapsed] = useState(false);
     const [fetching, setFetching] = useState(true);
+    const [showDrawer, setShowDrawer] = useState(false);
 
     const fetchStudents = () =>
         getAllStudents()
@@ -65,7 +67,7 @@ function App() {
         console.log("component is mounted");
         fetchStudents();
     }, []);
-    
+
     const renderStudents = () => {
         if (fetching) {
             return <Spin indicator={antIcon}/>
@@ -73,16 +75,29 @@ function App() {
         if (students.length <= 0) {
             return <Empty/>;
         }
-        return <Table
-            dataSource={students}
-            columns={columns}
-            bordered
-            title={() => <Button type="primary" icon={<PlusOutlined/>} size={size}>Add New Student</Button>}
-            pagination={{pageSize: 50}}
-            scroll={{y: 300}}
-            rowKey={(student) => student.id}
-            // footer={() => 'Footer'}
-        />;
+        return <>
+            <StudentDrawerForm
+                showDrawer={showDrawer}
+                setShowDrawer={setShowDrawer}
+            />
+            <Table
+                dataSource={students}
+                columns={columns}
+                bordered
+                title={() =>
+                    <Button
+                        onClick={() => setShowDrawer(!showDrawer)}
+                        type="primary"
+                        icon={<PlusOutlined/>}
+                        size={size}>
+                        Add New Student
+                    </Button>}
+                pagination={{pageSize: 50}}
+                scroll={{y: 300}}
+                rowKey={(student) => student.id}
+                // footer={() => 'Footer'}
+            />;
+        </>
     }
 
     return <Layout style={{minHeight: '100vh'}}>
