@@ -72,7 +72,7 @@ function StudentDrawerForm({showDrawer, setShowDrawer}) {
             </Row>
             <Row>
                 <Col span={12}>
-                    <Form.Item >
+                    <Form.Item>
                         <Button type="primary" htmlType="submit">
                             Submit
                         </Button>
