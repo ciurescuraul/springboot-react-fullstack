@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
-import {getAllStudents} from "./client";
+import {deleteStudent, getAllStudents} from "./client";
 import './App.css';
-import {Avatar, Badge, Breadcrumb, Button, Empty, Layout, Menu, Spin, Table, Tag} from 'antd';
+import {Avatar, Badge, Breadcrumb, Button, Empty, Layout, Menu, Popconfirm, Radio, Spin, Table, Tag} from 'antd';
 import {
     DesktopOutlined,
     FileOutlined,
@@ -12,6 +12,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import StudentDrawerForm from "./StudentDrawerForm";
+import {successNotification} from "./Notification";
 
 const CustomAvatar = ({name}) => {
     let trim = name.trim();
@@ -26,7 +27,13 @@ const CustomAvatar = ({name}) => {
 }
 const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
-const columns = [
+const removeStudent = (studentId, callback) => {
+    deleteStudent(studentId).then(() => {
+       successNotification("Student deleted",`Student ${studentId} was deleted`);
+       callback();
+    });
+}
+const columns = fetchStudents => [
     {
         title: '',
         dataIndex: 'avatar',
@@ -53,6 +60,25 @@ const columns = [
         title: 'Gender',
         dataIndex: 'gender',
         key: 'gender',
+    },
+    {
+        title: 'Actions',
+        key: 'actions',
+        render: (text, student) =>
+            <Radio.Group>
+                <Popconfirm
+                    placement='topRight'
+                    title={`Are you sure to delete ${student.name} ?`}
+                    onConfirm={() => removeStudent(student.id, fetchStudents)}
+                    okText="Yes"
+                    cancelText="No"
+                >
+                    <a href="#">
+                        <Radio.Button value="small">Delete</Radio.Button>
+                    </a>
+                </Popconfirm>,
+                <Radio.Button value="small">Edit</Radio.Button>
+            </Radio.Group>
     },
 ];
 const antIcon = <LoadingOutlined style={{fontSize: 24}} spin/>;
@@ -93,7 +119,7 @@ function App() {
             />
             <Table
                 dataSource={students}
-                columns={columns}
+                columns={columns(fetchStudents)}
                 bordered
                 title={() =>
                     <>

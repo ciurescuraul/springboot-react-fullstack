@@ -43,3 +43,11 @@
     -d, --detach                         Run container in background and print container ID
 
 > docker run -it --rm --network=db postgres:alpine psql -h db -U postgres
+
+### Rest Resources ###
+
+- Get all students - api/v1/students
+- Get one student - api/v1/students/{id}
+- Add one student - api/v1/students
+- Edit one student - api/v1/students/{id}
+- Delete one student - api/v1/students/{id}
