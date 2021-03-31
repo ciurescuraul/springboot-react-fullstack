@@ -26,6 +26,13 @@
 
 ## Database and Spring Data JPA
 
+- Edit AWS Security Groups 
+    - Modify Inbound rules to allow traffic from my ip, so I can connect directly from IntelliJ or Psql.
+
+> docker run -it --rm postgres:alpine psql -h aakrj4g0c6uj98.cnoo78crq4no.eu-west-2.rds.amazonaws.com -U postgres -d postgres    
+
+> docker run -it --rm postgres:alpine psql -h <host_name> -U <user_name> -d <database_name>
+
 ### Create Docker Network
 
 > docker network create db
