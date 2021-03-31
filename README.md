@@ -12,7 +12,17 @@
 
 ### Deploy Application on Elastic Bean Stalk (with Load Balancer)
 
-    - upload docker-compose.yaml 
+* upload docker-compose.yaml 
+
+```
+ version: "3.9"
+ services:
+    backend:
+       image: "rehcems/sprinboot-react-fullstack:latest"
+       ports:
+         - "80:8080"
+       restart: "always"
+```
 
 ## Database and Spring Data JPA
 
