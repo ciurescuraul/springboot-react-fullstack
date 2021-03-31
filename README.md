@@ -4,11 +4,11 @@
 
 ### Jib Command to push the image to Docker Hub Repository
 
-> mvn clean install jib:build -Dimage=rehcems/spring-react-fullstack:v1
+> mvn clean install jib:build -Dimage=rehcems/spring-react-fullstack:1.0.1
 
 ### Create _jib-push-to-dockerhub_ Maven Profile to wrap the application automatically and push it to Docker Hub
 
-> mvn clean install -P build-frontend -P jib-push-to-dockerhub -D app.image.tag=1.0.1
+> mvn clean install -P build-frontend -P jib-push-to-dockerhub -D app.image.tag=1.0.2
 
 ### Deploy Application on Elastic Bean Stalk (with Load Balancer)
 

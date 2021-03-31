@@ -15,7 +15,7 @@
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>15</java.version>
-        <app.image.name>sprinboot-react-fullstack</app.image.name>
+        <app.image.name>springboot-react-fullstack</app.image.name>
         <app.image.tag/>
     </properties>
     <dependencies>
