@@ -22,7 +22,9 @@ public class StudentController
   }
 
   @GetMapping(path = "/{studentId}")
-  public Optional<Student> findStudentById(@PathVariable(value = "studentId") Long studentId){
+  public Optional<Student> findStudentById(@PathVariable(
+      value = "studentId") Long studentId)
+  {
     return studentService.findStudentById(studentId);
   }
 
@@ -33,7 +35,9 @@ public class StudentController
   }
 
   @DeleteMapping(path = "/{studentId}")
-  public void deleteStudentById(@PathVariable(value = "studentId") Long studentId){
-      studentService.deleteStudentById(studentId);
-    }
+  public void deleteStudentById(@PathVariable(
+      value = "studentId") Long studentId)
+  {
+    studentService.deleteStudentById(studentId);
+  }
 }

@@ -1,13 +1,13 @@
 import fetch from 'unfetch';
 
-function checkStatus(response) {
+const checkStatus = response => {
     if (response.ok) {
         return response;
-    } else {
-        var error = new Error(response.statusText);
-        error.response = response;
-        return Promise.reject(error);
     }
+    //convert non-2xx HTTP responses into errors:
+    const error = new Error(response.statusText);
+    error.response = response;
+    return Promise.reject(error);
 }
 
 export const getAllStudents = () =>

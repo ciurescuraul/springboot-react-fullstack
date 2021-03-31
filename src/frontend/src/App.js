@@ -12,7 +12,7 @@ import {
     UserOutlined,
 } from '@ant-design/icons';
 import StudentDrawerForm from "./StudentDrawerForm";
-import {successNotification} from "./Notification";
+import {errorNotification, successNotification} from "./Notification";
 
 const CustomAvatar = ({name}) => {
     let trim = name.trim();
@@ -31,6 +31,14 @@ const removeStudent = (studentId, callback) => {
     deleteStudent(studentId).then(() => {
        successNotification("Student deleted",`Student ${studentId} was deleted`);
        callback();
+    }).catch(err => {
+        err.response.json().then(res => {
+            console.log(res);
+            errorNotification(
+                "There was an issue ",
+                `${res.message} [${res.status}] [${res.error}]`,
+            )
+        });
     });
 }
 const columns = fetchStudents => [
@@ -96,8 +104,15 @@ function App() {
             .then(data => {
                 console.log(data);
                 setStudents(data);
-                setFetching(false);
-            })
+            }).catch(err => {
+                console.log(err.response)
+            err.response.json().then(res => {
+                console.log(res);
+                errorNotification(
+                    `There was an issue`,
+                    `${res.message} [${res.error}] [statusCode: ${res.status}]`)
+            });
+        }).finally(() => setFetching(false));
 
     useEffect(() => {
         console.log("component is mounted");
@@ -109,7 +124,22 @@ function App() {
             return <Spin indicator={antIcon}/>
         }
         if (students.length <= 0) {
-            return <Empty/>;
+            return <>
+                <StudentDrawerForm
+                    showDrawer={showDrawer}
+                    setShowDrawer={setShowDrawer}
+                    fetchStudents={fetchStudents}
+                />
+                <Button
+                    onClick={() => setShowDrawer(!showDrawer)}
+                    type="primary"
+                    icon={<PlusOutlined/>}
+                    size={size}>
+                    Add New Student
+                </Button>
+                <Empty/>
+            </>
+
         }
         return <>
             <StudentDrawerForm
