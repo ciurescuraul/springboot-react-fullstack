@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 
 import lombok.AllArgsConstructor;
 
+import javax.validation.Valid;
+
 @RestController
 @AllArgsConstructor
 @RequestMapping(path = "api/v1/students")
@@ -29,8 +31,11 @@ public class StudentController
   }
 
   @PostMapping
-  public void addStudent(@RequestBody Student student)
+  public void addStudent(@Valid @RequestBody Student student)
   {
+    student.setName(student.getName().trim());
+    student.setEmail(student.getEmail().trim());
+
     studentService.addStudent(student);
   }
 
