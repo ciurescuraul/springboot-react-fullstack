@@ -8,7 +8,7 @@
 
 ### Create _jib-push-to-dockerhub_ Maven Profile to wrap the application automatically and push it to Docker Hub
 
-> mvn clean install -P build-frontend -P jib-push-to-dockerhub -D app.image.tag=1.0.2
+> mvn clean install -P build-frontend -P jib-push-to-dockerhub -D app.image.tag=1.0.3
 
 ### Deploy Application on Elastic Bean Stalk (with Load Balancer)
 
