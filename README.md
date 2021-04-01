@@ -1,4 +1,14 @@
-## CI/CD with GitHub Actions
+# SpringBoot React Fullstack / Student Management Application Demo
+  Application used to manage students (exercise app).
+
+  - Backend used technologies: 
+    - Java, SpringBoot, Postgresql, Maven
+  - Frontend used technologies:
+    - React
+  - DevOps :
+    - Git, Docker, Jit, AWS Elastic BeanStalk, CI/CD
+
+### CI/CD with GitHub Actions
 ### GitHub Actions
 - Create a folder .github/workflows/
   - build.yaml
