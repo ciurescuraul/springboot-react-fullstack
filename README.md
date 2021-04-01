@@ -1,3 +1,10 @@
+## CI/CD with GitHub Actions
+### GitHub Actions
+- Create a folder .github/workflows/
+  - build.yaml
+  - deploy.yaml
+
+
 ### Jib Command to build Docker local image (fullstack with v1 tag)
 
 > mvn clean install jib:dockerBuild -Dimage=fullstack:v1
@@ -8,7 +15,7 @@
 
 ### Create _jib-push-to-dockerhub_ Maven Profile to wrap the application automatically and push it to Docker Hub
 
-> mvn clean install -P build-frontend -P jib-push-to-dockerhub -D app.image.tag=1.0.3
+> mvn clean install -P build-frontend -P jib-push-to-dockerhub -D app.image.tag=1.0.4
 
 ### Deploy Application on Elastic Bean Stalk (with Load Balancer)
 
@@ -23,7 +30,6 @@
          - "80:8080"
        restart: "always"
 ```
-
 ## Database and Spring Data JPA
 
 - Edit AWS Security Groups 
