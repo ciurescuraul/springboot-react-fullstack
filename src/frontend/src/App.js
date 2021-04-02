@@ -1,7 +1,21 @@
 import {useEffect, useState} from 'react';
 import {deleteStudent, getAllStudents} from "./client";
 import './App.css';
-import {Avatar, Badge, Breadcrumb, Button, Empty, Layout, Menu, Popconfirm, Radio, Spin, Table, Tag} from 'antd';
+import {
+    Avatar,
+    Badge,
+    Breadcrumb,
+    Button,
+    Divider,
+    Empty,
+    Layout,
+    Menu,
+    Popconfirm,
+    Radio,
+    Spin,
+    Table,
+    Tag
+} from 'antd';
 import {
     DesktopOutlined,
     FileOutlined,
@@ -208,7 +222,16 @@ function App() {
                     {renderStudents()}
                 </div>
             </Content>
-            <Footer style={{textAlign: 'center'}}>© 2021 Created by <a href={"https://cyberdev-tech.com/"}>CyberTech</a></Footer>
+            <Footer style={{textAlign: 'center'}}>
+                © 2021 Created by
+                <a rel={"noopener noreferrer"} target={"_blank"} href={"https://cyberdev-tech.com/"}> CyberTech </a>
+            </Footer>
+            <Divider><a
+                rel={"noopener noreferrer"}
+                target={"_blank"}
+                href="https://cyberdev-tech.com/promotions">
+                Click here to access our Promotions !
+            </a></Divider>
         </Layout>
     </Layout>
 }
