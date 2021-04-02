@@ -230,7 +230,7 @@ function App() {
                 rel={"noopener noreferrer"}
                 target={"_blank"}
                 href="https://cyberdev-tech.com/promotions">
-                Click here to access our New Promotions !
+                Click here to access our promotions !
             </a></Divider>
         </Layout>
     </Layout>
