@@ -20,7 +20,7 @@ env:
   AWS_REGION: eu-west-2
   EB_ENVIRONMENT_NAME: Studentmanagementsystem-env
   EB_APPLICATION_NAME: student-management-system
-  EB_DEPLOYMENT_PACKAGE: elasticbeanstalk/docker-compose.yml
+  EB_DEPLOYMENT_PACKAGE: elasticbeanstalk/docker-compose.yaml
 
 jobs:
   deploy:
