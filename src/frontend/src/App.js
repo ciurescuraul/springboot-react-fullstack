@@ -1,7 +1,21 @@
 import {useEffect, useState} from 'react';
 import {deleteStudent, getAllStudents} from "./client";
 import './App.css';
-import {Avatar, Badge, Breadcrumb, Button, Empty, Layout, Menu, Popconfirm, Radio, Spin, Table, Tag} from 'antd';
+import {
+    Avatar,
+    Badge,
+    Breadcrumb,
+    Button,
+    Divider,
+    Empty,
+    Layout,
+    Menu,
+    Popconfirm,
+    Radio,
+    Spin,
+    Table,
+    Tag
+} from 'antd';
 import {
     DesktopOutlined,
     FileOutlined,
@@ -29,8 +43,8 @@ const {Header, Content, Footer, Sider} = Layout;
 const {SubMenu} = Menu;
 const removeStudent = (studentId, callback) => {
     deleteStudent(studentId).then(() => {
-       successNotification("Student deleted",`Student ${studentId} was deleted`);
-       callback();
+        successNotification("Student deleted", `Student ${studentId} was deleted`);
+        callback();
     }).catch(err => {
         err.response.json().then(res => {
             console.log(res);
@@ -81,9 +95,7 @@ const columns = fetchStudents => [
                     okText="Yes"
                     cancelText="No"
                 >
-                    <a href="#">
-                        <Radio.Button value="small">Delete</Radio.Button>
-                    </a>
+                    <Radio.Button value="small">Delete</Radio.Button>
                 </Popconfirm>,
                 <Radio.Button value="small">Edit</Radio.Button>
             </Radio.Group>
@@ -105,7 +117,7 @@ function App() {
                 console.log(data);
                 setStudents(data);
             }).catch(err => {
-                console.log(err.response)
+            console.log(err.response)
             err.response.json().then(res => {
                 console.log(res);
                 errorNotification(
@@ -210,7 +222,16 @@ function App() {
                     {renderStudents()}
                 </div>
             </Content>
-            <Footer style={{textAlign: 'center'}}>© 2021 Created by <a href={"https://cyberdev-tech.com/"}>CyberTech</a></Footer>
+            <Footer style={{textAlign: 'center'}}>
+                © 2021 Created by
+                <a rel={"noopener noreferrer"} target={"_blank"} href={"https://cyberdev-tech.com/"}> CyberTech </a>
+            </Footer>
+            <Divider><a
+                rel={"noopener noreferrer"}
+                target={"_blank"}
+                href="https://cyberdev-tech.com/promotions">
+                Click here to access our Promotions !
+            </a></Divider>
         </Layout>
     </Layout>
 }

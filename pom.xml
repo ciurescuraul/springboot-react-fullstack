@@ -214,7 +214,7 @@
                                     <goal>install-node-and-npm</goal>
                                 </goals>
                                 <configuration>
-                                    <nodeVersion>v15.5.1</nodeVersion>
+                                    <nodeVersion>v15.4.0</nodeVersion>
                                     <npmVersion>7.3.0</npmVersion>
                                 </configuration>
                             </execution>
@@ -250,27 +250,27 @@
                                 <configuration>
                                     <resources>
                                         <resource>
-                                            <directory>${basedir}/src/frontend/build</directory>
+                                            <directory>src/frontend/build</directory>
                                         </resource>
                                     </resources>
                                     <outputDirectory>${basedir}/target/classes/static</outputDirectory>
                                 </configuration>
                             </execution>
-                            <execution>
-                                <id>copy-build-folder-to-local-folder</id>
-                                <phase>process-classes</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <resources>
-                                        <resource>
-                                            <directory>${basedir}/src/frontend/build</directory>
-                                        </resource>
-                                    </resources>
-                                    <outputDirectory>${basedir}/src/main/resources/static</outputDirectory>
-                                </configuration>
-                            </execution>
+<!--                            <execution>-->
+<!--                                <id>copy-build-folder-to-local-folder</id>-->
+<!--                                <phase>process-classes</phase>-->
+<!--                                <goals>-->
+<!--                                    <goal>copy-resources</goal>-->
+<!--                                </goals>-->
+<!--                                <configuration>-->
+<!--                                    <resources>-->
+<!--                                        <resource>-->
+<!--                                            <directory>${basedir}/src/frontend/build</directory>-->
+<!--                                        </resource>-->
+<!--                                    </resources>-->
+<!--                                    <outputDirectory>${basedir}/src/main/resources/static</outputDirectory>-->
+<!--                                </configuration>-->
+<!--                            </execution>-->
                         </executions>
                     </plugin>
                 </plugins>

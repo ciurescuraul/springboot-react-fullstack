@@ -32,6 +32,9 @@ build/
 ### VS Code ###
 .vscode/
 
-### NPM ###
-src/frontend/node_modules/
-src/frontend/node
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables file
+.env
+.env.test
