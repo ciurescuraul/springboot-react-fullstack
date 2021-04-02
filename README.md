@@ -9,11 +9,44 @@
     - Git, Docker, Jit, AWS Elastic BeanStalk, CI/CD
 
 ### CI/CD with GitHub Actions
-### GitHub Actions
-- Create a folder .github/workflows/
+### GitHub Actions -> This will trigger a CI(build) automated workflow for Pull Request
+- Create a folder .github/workflows/ 
   - build.yaml
-  - deploy.yaml
 
+### GitHub Actions -> This will trigger a CD(deploy) workflow on Merge to Master
+- Create a folder .github/workflows/
+    - deploy.yaml
+    
+    Steps:
+1. Slack notification (CI/CD Ongoing... + info)
+    - create a new app on https://api.slack.com/ and activate incoming webhooks to match the slack channel you want to receive messages to.
+    - in github action add a new secret to match the link generated above.
+    
+2. Checkout code into the runner (build workflow)
+   
+3. Setup Java
+   
+4. Generate a build number
+   
+5. Perform a Docker login
+   - in github action add a new secret to match the docker hub password.
+
+6. Maven clean package and include the Jib profile and if success push the docker image that contains our application to DockerHub
+   
+7. Slack notification (pushed <image_name>:<new_version> to docker hub... + info)
+   
+8. Update the docker-compose.yaml (by committing to the repository)
+   
+9. Slack notification (Deployment started... + info)
+   
+10. Deploy to AWS action will deploy the application into Elastic Beanstalk
+    - create a user and grab credentials, in our AWS account, that can perform deployments on Elastic Beanstalk
+        - create a group, create a new policy, create a new user to this group
+        - add Access key ID and Secret access key to Github Action Settings Secrets
+
+11. Slack notification (Everything was successful + info)
+    
+12. SUCCESS!, we can access the new version of our application
 
 ### Jib Command to build Docker local image (fullstack with v1 tag)
 
@@ -84,3 +117,6 @@
 - Add one student - api/v1/students
 - Edit one student - api/v1/students/{id}
 - Delete one student - api/v1/students/{id}
+
+### Slack Links - #build-spring-react-fullstack
+curl -X POST -H 'Content-type: application/json' --data '{"text":"Github, Actions"}' https://hooks.slack.com/services/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
