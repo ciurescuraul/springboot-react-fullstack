@@ -224,7 +224,7 @@ function App() {
             </Content>
             <Footer style={{textAlign: 'center'}}>
                 © 2021 Created by
-                <a rel={"noopener noreferrer"} target={"_blank"} href={"https://cyberdev-tech.com/"}>CyberTech</a>
+                <a rel={"noopener noreferrer"} target={"_blank"} href={"https://cyberdev-tech.com/"}> CyberTech </a>
             </Footer>
             <Divider><a
                 rel={"noopener noreferrer"}
